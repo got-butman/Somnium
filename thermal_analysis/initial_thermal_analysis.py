@@ -78,7 +78,7 @@ def Layer_volums(N_layers=N_layers):
     R=np.ones(N_layers+1) #initialize R
     t= (Lc+Le)/N_layers #thickness of each layer
     x= t*np.arange(N_layers+1) #distance from chamber to each layer
-    
+
     La=R2*np.sin(contr_angle) #length of beginning of chamber
     Lb=108 #mm #length before beginning of end of chamber
 
@@ -98,10 +98,6 @@ def Layer_volums(N_layers=N_layers):
             R[i]= end_chamber_radial_profile(x[i])
         else:
             R[i]= nozzle_radial_profile(x[i])
-
-    plt.plot(x, R, 'b')
-    plt.plot(x, -R, 'b')
-    plt.show()
 
     V = Volume(R)
     #make R_total global so it can be used in other functions
@@ -124,7 +120,6 @@ T= np.array(T)
 
 # Create mesh grid for plotting
 X, Y = np.meshgrid(x, np.linspace(-np.max(R), np.max(R), 100))
-print(X)
 
 # Initialize temperature grid with NaNs
 T_2D = np.full_like(X, np.nan, dtype=float)  # Fill with NaN initially
